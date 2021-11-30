@@ -1,50 +1,91 @@
-<body>
+class NameForm extends React.Component {
 
-<div id="root"></div>
+  constructor(props) {
 
-<script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+    super(props);
 
-<script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+    this.state = {value: ''};
 
-<script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+    this.handleChange = this.handleChange.bind(this);
 
-<script type="text/babel">
+    this.handleSubmit = this.handleSubmit.bind(this);
 
-function UsernameForm() {
+  }
 
-function handleSubmit(event) {
+  handleChange(event) {
 
-event.preventDefault()
+    this.setState({value: event.target.value});
 
-const username = event.target.elements.usernameInput.value
+  }
 
-alert(`You can access your art on https://artshare.ml/user/{$username}`)
+  handleSubmit(event) {
+
+    (Your art was submitted: ' + this.state.value);
+
+    event.preventDefault();
+
+  }
+
+  render() {
+
+    return (
+
+      <form onSubmit={this.handleSubmit}>
+
+        <label>
+
+          Name:
+
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+
+        </label>
+
+        <input type="submit" value="Upload" />
+
+      </form>
+
+    );
+
+  }
 
 }
 
-return (
+ReactDOM.render(
 
-<form onSubmit={handleSubmit}>
+  <NameForm />,
 
-<div>
+  document.getElementById('root')
 
-<label htmlFor="usernameInput">Title: </label>
+);
 
-<input id="usernameInput" type="text" />
 
-</div>
 
-<button type="submit">Submit</button>
 
-</form>
 
-)
 
-}
 
-ReactDOM.render(<UsernameForm />, document.getElementById('root'))
 
-</script>
 
-</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
